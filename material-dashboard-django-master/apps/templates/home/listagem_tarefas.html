@@ -24,17 +24,16 @@
                                 text-align: left;
                             }
                             th {
-                                background-color: #eb0029;
+                                background-color: #AD182D;
                             }
                         </style>
                     </head>
                     <body>
-                        <h1 style="color: #eb0029;">Minhas Tarefas</h1>
+                        <h1 style="color: #AD182D;">Minhas Tarefas</h1>
                         <table>
                             <thead style="color: white">
                                 <tr>
                                     <th>Título</th>
-                                    <th>Materia</th>
                                     <th>Descrição</th>
                                     <th>Prazo</th>
                                     <th>Status</th>
@@ -46,28 +45,27 @@
                                 <form method="POST"> {% csrf_token %}
                                 <tr>
                                     <td>{{ tarefa.titulo }}</td>
-                                    <td>{{ tarefa.materia }}</td>
                                     <td>{{ tarefa.descricao }}</td>
                                     <td>{{ tarefa.prazo }}</td>
                                     <td>{{ tarefa.status}}</td>
                                     <td>
                                         <div>
-                                            <button  class ="btn btn-primary btn-round" style="color: white; background-color:#eb0029"><a style="text-decoration: none; color: white" href="{% url 'editar_tarefa' tarefa.id %}">Editar</a></button>
+                                            <button  class ="btn btn-primary btn-round" style="color: white; background-color:#AD182D"><a style="text-decoration: none; color: white" href="{% url 'editar_tarefa' tarefa.id %}">Editar</a></button>
                                         </div>
                                         <div>
-                                             <button  class ="btn btn-primary btn-round"  style="color: white; background-color:#eb0029"><a style="text-decoration: none; color: white; background-color: #eb0029" href="{% url 'deletar_tarefa' tarefa.id %}"> Deletar</button>
+                                             <button  class ="btn btn-primary btn-round"  style="color: white; background-color:#AD182D"><a style="text-decoration: none; color: white; background-color: #AD182D;" href="{% url 'excluir_tarefa' tarefa.id %}"> Excluir</button>
                                         </div>
                                     </td>
                                 </tr>
                                 {% empty %}
                                 <tr>
-                                    <td colspan="6">Nenhuma tarefa encontrada.</td>
+                                    <td colspan="6">Tarefa inexistente.</td>
                                 </tr>
                                 </form>
                                 {% endfor %}
                             </tbody>
                         </table>
-                        <button type="submit" class ="btn btn-primary btn-round" style="color: white; background-color:#eb0029"><a style="text-decoration: none; color: inherit;" href="{% url 'cadastro_tarefas' %}" data-background-color="red">Adicionar Nova Tarefa</a></button>
+                        <button type="submit" class ="btn btn-primary btn-round" style="color: white; background-color:#AD182D;"><a style="text-decoration: none; color: inherit;" href="{% url 'cadastro_tarefas' %}" data-background-color="red">Nova Tarefa</a></button>
                     </body>                    </h4>
                <!--     <a href="/" class="btn btn-primary btn-round; color:red">Home</a> -->
                 </div>
