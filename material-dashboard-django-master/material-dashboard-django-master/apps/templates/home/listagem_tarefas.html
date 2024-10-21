@@ -1,0 +1,81 @@
+{% extends "layouts/base.html" %}
+
+{% block title %} Listagem tarefas {% endblock %} 
+
+<!-- Specific Page CSS goes HERE  -->
+{% block stylesheets %}{% endblock stylesheets %}
+
+{% block content %}
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card card-profile">
+                <div class="card-body">
+                    <h6 class="card-category text-gray">Listagem de Tarefas</h6>
+                    <h4 class="card-title">
+                        <style>
+                            table {
+                                width: 100%;
+                                border-collapse: collapse;
+                            }
+                            th, td {
+                                padding: 10px;
+                                border: 1px solid #ccc;
+                                text-align: left;
+                            }
+                            th {
+                                background-color: #eb0029;
+                            }
+                        </style>
+                    </head>
+                    <body>
+                        <h1 style="color: #eb0029;">Minhas Tarefas</h1>
+                        <table>
+                            <thead style="color: white">
+                                <tr>
+                                    <th>Título</th>
+                                    <th>Materia</th>
+                                    <th>Descrição</th>
+                                    <th>Prazo</th>
+                                    <th>Status</th>
+                                    <th>Ações</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for tarefa in tarefas %}
+                                <form method="POST"> {% csrf_token %}
+                                <tr>
+                                    <td>{{ tarefa.titulo }}</td>
+                                    <td>{{ tarefa.materia }}</td>
+                                    <td>{{ tarefa.descricao }}</td>
+                                    <td>{{ tarefa.prazo }}</td>
+                                    <td>{{ tarefa.status}}</td>
+                                    <td>
+                                        <div>
+                                            <button  class ="btn btn-primary btn-round" style="color: white; background-color:#eb0029"><a style="text-decoration: none; color: white" href="{% url 'editar_tarefa' tarefa.id %}">Editar</a></button>
+                                        </div>
+                                        <div>
+                                             <button  class ="btn btn-primary btn-round"  style="color: white; background-color:#eb0029"><a style="text-decoration: none; color: white; background-color: #eb0029" href="{% url 'deletar_tarefa' tarefa.id %}"> Deletar</button>
+                                        </div>
+                                    </td>
+                                </tr>
+                                {% empty %}
+                                <tr>
+                                    <td colspan="6">Nenhuma tarefa encontrada.</td>
+                                </tr>
+                                </form>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                        <button type="submit" class ="btn btn-primary btn-round" style="color: white; background-color:#eb0029"><a style="text-decoration: none; color: inherit;" href="{% url 'cadastro_tarefas' %}" data-background-color="red">Adicionar Nova Tarefa</a></button>
+                    </body>                    </h4>
+               <!--     <a href="/" class="btn btn-primary btn-round; color:red">Home</a> -->
+                </div>
+            </div>
+        </div>
+    </div>
+    
+{% endblock content %}
+
+<!-- Specific Page JS goes HERE  -->
+{% block javascripts %}{% endblock javascripts %}

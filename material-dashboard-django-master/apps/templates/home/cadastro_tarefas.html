@@ -1,0 +1,47 @@
+{% extends "layouts/base.html" %}
+
+{% block title %} Cadastro tarefas {% endblock %} 
+
+<!-- Specific Page CSS goes HERE  -->
+{% block stylesheets %}{% endblock stylesheets %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-12">
+            <div class="card mb-4">
+                <div class="card-header pb-0">
+                <h1 style = "color: #eb2009;">Cadastrar Nova Tarefa</h1>
+                </div>
+                <div class="card-body p-4">
+                    <form action="{% url 'cadastrar_tarefa' %}" method="POST" >
+                        {% csrf_token %}
+                        <label for="titulo">Título:</label>
+                        <input type="text" class="form-control" id="titulo" name="titulo" style="color: #eb2009; border: 1px solid #eb2009;" required>
+                        <br>
+
+                        <label for="materia">Matéria:</label>
+                        <input id="materia" name="materia" class="form-control" required></input>
+                        <br>
+
+                        <label for="descricao">Descrição:</label>
+                        <input id="descricao" name="descricao" class="form-control" required></input>
+                        <br>
+
+                        <label for="prazo">Prazo:</label>
+                        <input type="date" id="prazo" name="prazo" class="form-control" required>
+                        <br>
+
+                        <label for="status">Status:</label>
+                        <input type="text" id="status" name="status" class="form-control" required>
+                        <br>
+                    
+                        <button type="submit" class="btn btn-primary" style="color: white; background-color: red">Cadastar</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock content %}
+
+<!-- Specific Page JS goes HERE  -->
+{% block javascripts %}{% endblock javascripts %}
